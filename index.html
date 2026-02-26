@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Our Classroom Love Story 💛</title>
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body{
+  background:#fdf6e3;
+  overflow-x:hidden;
+}
+
+/* Sections */
+section{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:40px;
+  transition:1s;
+}
+
+.content{
+  max-width:700px;
+  animation:fadeUp 1.5s ease;
+}
+
+@keyframes fadeUp{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h1{
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+p{
+  font-size:19px;
+  line-height:1.8;
+}
+
+/* Blackboard Intro */
+.intro{
+  background:#2f3e46;
+  color:#fff;
+  flex-direction:column;
+}
+
+.intro h1{
+  font-family:cursive;
+  font-size:45px;
+}
+
+.startBtn{
+  margin-top:25px;
+  padding:12px 25px;
+  border:none;
+  border-radius:20px;
+  background:white;
+  color:#2f3e46;
+  font-weight:bold;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.startBtn:hover{
+  transform:scale(1.1);
+}
+
+/* Cute backgrounds */
+.page1{background:#ffe5ec;}
+.page2{background:#e0f7fa;}
+.page3{background:#fff3b0;}
+.page4{background:#d0f4de;}
+.page5{background:#fcd5ce;}
+
+/* Heart floating */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  font-size:18px;
+  animation:float 6s linear infinite;
+  opacity:0.6;
+}
+
+@keyframes float{
+  to{transform:translateY(-110vh);}
+}
+
+button.next{
+  margin-top:25px;
+  padding:10px 20px;
+  border:none;
+  border-radius:20px;
+  background:#333;
+  color:white;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Floating hearts -->
+<script>
+for(let i=0;i<15;i++){
+ let heart=document.createElement("div");
+ heart.className="heart";
+ heart.innerHTML="💛";
+ heart.style.left=Math.random()*100+"vw";
+ heart.style.animationDuration=(4+Math.random()*4)+"s";
+ document.body.appendChild(heart);
+}
+</script>
+
+<!-- Intro -->
+<section class="intro" id="intro">
+  <h1>Our Same Class Love Story 📚</h1>
+  <button class="startBtn" onclick="startStory()">Open Our Diary 💌</button>
+</section>
+
+<!-- Page 1 -->
+<section class="page1" id="p1" style="display:none;">
+<div class="content">
+<h1>The First Bench Moment 🪑</h1>
+<p>
+Same classroom. Same attendance sheet.
+I never thought the person sitting just two benches away
+would become my favorite person in the entire batch.
+</p>
+<button class="next" onclick="nextPage(1)">Next ➜</button>
+</div>
+</section>
+
+<!-- Page 2 -->
+<section class="page2" id="p2" style="display:none;">
+<div class="content">
+<h1>Library Pretending 📖</h1>
+<p>
+We went to the library to "study".
+But somehow, we ended up talking about everything
+except the syllabus.
+And I realised...
+I didn’t just like sitting beside you.
+I liked being around you.
+</p>
+<button class="next" onclick="nextPage(2)">Next ➜</button>
+</div>
+</section>
+
+<!-- Page 3 -->
+<section class="page3" id="p3" style="display:none;">
+<div class="content">
+<h1>Canteen Memories 🍵</h1>
+<p>
+Sharing food. Stealing fries.
+That one chair that somehow always became “our spot”.
+Small moments. Normal days.
+But with you, even ordinary felt special.
+</p>
+<button class="next" onclick="nextPage(3)">Next ➜</button>
+</div>
+</section>
+
+<!-- Page 4 -->
+<section class="page4" id="p4" style="display:none;">
+<div class="content">
+<h1>Hostel Goodbyes 🌙</h1>
+<p>
+Even though we’re in the same college,
+those hostel timings always felt unfair.
+Every “okay bye” secretly meant,
+“Stay 5 minutes more.”
+</p>
+<button class="next" onclick="nextPage(4)">Next ➜</button>
+</div>
+</section>
+
+<!-- Page 5 -->
+<section class="page5" id="p5" style="display:none;">
+<div class="content">
+<h1>Still Choosing You 💛</h1>
+<p>
+From classmates…
+to friends…
+to something much more beautiful.
+11 months later,
+I still look for you first in every classroom.
+And I still smile the same way.
+</p>
+</div>
+</section>
+
+<script>
+function startStory(){
+  document.getElementById("intro").style.display="none";
+  document.getElementById("p1").style.display="flex";
+}
+
+function nextPage(num){
+  document.getElementById("p"+num).style.display="none";
+  document.getElementById("p"+(num+1)).style.display="flex";
+}
+</script>
+
+</body>
+</html>
