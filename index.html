@@ -2,213 +2,263 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Our Classroom Love Story 💛</title>
+<title>Our Love Story 💛</title>
+
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: 'Segoe UI', sans-serif;
+  font-family:'Segoe UI',sans-serif;
 }
 
 body{
-  background:#fdf6e3;
-  overflow-x:hidden;
+  background:linear-gradient(135deg,#ffdde1,#ee9ca7);
+  overflow:hidden;
+  transition:1s;
+  color:#333;
 }
 
 /* Sections */
-section{
+.section{
   height:100vh;
-  display:flex;
+  width:100%;
+  display:none;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   text-align:center;
   padding:40px;
-  transition:1s;
+  animation:fade 1.2s ease;
 }
 
-.content{
-  max-width:700px;
-  animation:fadeUp 1.5s ease;
-}
-
-@keyframes fadeUp{
+@keyframes fade{
   from{opacity:0; transform:translateY(40px);}
   to{opacity:1; transform:translateY(0);}
 }
 
 h1{
-  font-size:38px;
+  font-size:42px;
+  color:#ff4d6d;
   margin-bottom:20px;
 }
 
 p{
-  font-size:19px;
-  line-height:1.8;
+  font-size:20px;
+  max-width:750px;
+  line-height:1.9;
+  margin-bottom:15px;
 }
 
-/* Blackboard Intro */
-.intro{
-  background:#2f3e46;
-  color:#fff;
-  flex-direction:column;
-}
-
-.intro h1{
-  font-family:cursive;
-  font-size:45px;
-}
-
-.startBtn{
+button{
   margin-top:25px;
-  padding:12px 25px;
+  padding:12px 30px;
   border:none;
-  border-radius:20px;
-  background:white;
-  color:#2f3e46;
-  font-weight:bold;
+  border-radius:30px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
   cursor:pointer;
   transition:0.3s;
 }
-
-.startBtn:hover{
+button:hover{
   transform:scale(1.1);
+  box-shadow:0 0 20px #ff4d6d;
 }
 
-/* Cute backgrounds */
-.page1{background:#ffe5ec;}
-.page2{background:#e0f7fa;}
-.page3{background:#fff3b0;}
-.page4{background:#d0f4de;}
-.page5{background:#fcd5ce;}
+/* Ring */
+.ring{
+  font-size:90px;
+  animation:drop 2s forwards;
+}
+@keyframes drop{
+  from{transform:translateY(-300px);}
+  to{transform:translateY(0);}
+}
 
-/* Heart floating */
+/* Typing */
+#typing{
+  border-right:3px solid #ff4d6d;
+  white-space:nowrap;
+  overflow:hidden;
+}
+
+/* Fireworks */
+.particle{
+  position:absolute;
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  animation:explode 1.5s forwards;
+}
+@keyframes explode{
+  to{
+    transform:translate(var(--x),var(--y));
+    opacity:0;
+  }
+}
+
+/* Heart rain */
 .heart{
-  position:fixed;
-  bottom:-20px;
-  font-size:18px;
-  animation:float 6s linear infinite;
-  opacity:0.6;
+  position:absolute;
+  font-size:25px;
+  animation:fall 4s linear forwards;
+}
+@keyframes fall{
+  0%{ transform:translateY(0) rotate(0);}
+  100%{ transform:translateY(110vh) rotate(360deg);}
 }
 
-@keyframes float{
-  to{transform:translateY(-110vh);}
+/* Confetti */
+.confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  animation:fall 5s linear forwards;
 }
 
-button.next{
-  margin-top:25px;
-  padding:10px 20px;
-  border:none;
-  border-radius:20px;
-  background:#333;
+/* Big message */
+.bigText{
+  position:absolute;
+  top:40%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  font-size:50px;
   color:white;
-  cursor:pointer;
+  text-shadow:0 0 25px hotpink;
+  animation:fadeIn 2s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Floating hearts -->
-<script>
-for(let i=0;i<15;i++){
- let heart=document.createElement("div");
- heart.className="heart";
- heart.innerHTML="💛";
- heart.style.left=Math.random()*100+"vw";
- heart.style.animationDuration=(4+Math.random()*4)+"s";
- document.body.appendChild(heart);
-}
-</script>
-
-<!-- Intro -->
-<section class="intro" id="intro">
-  <h1>Our Same Class Love Story 📚</h1>
-  <button class="startBtn" onclick="startStory()">Open Our Diary 💌</button>
-</section>
-
 <!-- Page 1 -->
-<section class="page1" id="p1" style="display:none;">
-<div class="content">
-<h1>The First Bench Moment 🪑</h1>
+<div class="section" id="s1" style="display:flex;">
+<h1>Our College Story 📚</h1>
 <p>
-Same classroom. Same attendance sheet.
-I never thought the person sitting just two benches away
-would become my favorite person in the entire batch.
+Same class. Same batch. Same attendance sheet.
+But somehow… you became the only name I noticed.
 </p>
-<button class="next" onclick="nextPage(1)">Next ➜</button>
+<button onclick="next(1)">Continue 💛</button>
 </div>
-</section>
 
 <!-- Page 2 -->
-<section class="page2" id="p2" style="display:none;">
-<div class="content">
-<h1>Library Pretending 📖</h1>
+<div class="section" id="s2">
+<h1>Classroom to Something More 🪑</h1>
 <p>
-We went to the library to "study".
-But somehow, we ended up talking about everything
-except the syllabus.
-And I realised...
-I didn’t just like sitting beside you.
-I liked being around you.
+Passing smiles during lectures.
+Pretending to focus.
+Choosing the seat next to you even when others were empty.
+Somewhere between assignments and exams…
+we became us.
 </p>
-<button class="next" onclick="nextPage(2)">Next ➜</button>
+<button onclick="next(2)">Next 💕</button>
 </div>
-</section>
 
 <!-- Page 3 -->
-<section class="page3" id="p3" style="display:none;">
-<div class="content">
-<h1>Canteen Memories 🍵</h1>
-<p>
-Sharing food. Stealing fries.
-That one chair that somehow always became “our spot”.
-Small moments. Normal days.
-But with you, even ordinary felt special.
-</p>
-<button class="next" onclick="nextPage(3)">Next ➜</button>
-</div>
-</section>
-
-<!-- Page 4 -->
-<section class="page4" id="p4" style="display:none;">
-<div class="content">
+<div class="section" id="s3">
 <h1>Hostel Goodbyes 🌙</h1>
 <p>
-Even though we’re in the same college,
-those hostel timings always felt unfair.
-Every “okay bye” secretly meant,
-“Stay 5 minutes more.”
+Every “okay bye” secretly meant
+“Stay five minutes more.”
+Even in the same campus,
+I missed you the moment you left.
 </p>
-<button class="next" onclick="nextPage(4)">Next ➜</button>
+<button onclick="next(3)">One More 💖</button>
 </div>
-</section>
+
+<!-- Page 4 -->
+<div class="section" id="s4">
+<h1>11 Months Later 💞</h1>
+<p id="typing"></p>
+<button onclick="next(4)">Final Page 💍</button>
+</div>
 
 <!-- Page 5 -->
-<section class="page5" id="p5" style="display:none;">
-<div class="content">
-<h1>Still Choosing You 💛</h1>
+<div class="section" id="s5">
+<h1>My Forever 💍</h1>
+<div class="ring">💍</div>
 <p>
-From classmates…
-to friends…
-to something much more beautiful.
-11 months later,
-I still look for you first in every classroom.
-And I still smile the same way.
+I don’t just want memories with you.
+I want a life with you.
+A home. A future.
+Everything.
 </p>
+<button onclick="celebrate()">Celebrate Our Love 🎆</button>
 </div>
-</section>
 
 <script>
-function startStory(){
-  document.getElementById("intro").style.display="none";
-  document.getElementById("p1").style.display="flex";
+
+/* Navigation */
+function next(n){
+  document.getElementById("s"+n).style.display="none";
+  document.getElementById("s"+(n+1)).style.display="flex";
 }
 
-function nextPage(num){
-  document.getElementById("p"+num).style.display="none";
-  document.getElementById("p"+(num+1)).style.display="flex";
+/* Typing Effect */
+let text="11 months later, I still look for you first in every classroom. I still smile the same way. And no matter what happens… I choose you. Today. Tomorrow. Forever. 💛";
+let i=0;
+function type(){
+  if(i<text.length){
+    document.getElementById("typing").innerHTML+=text.charAt(i);
+    i++;
+    setTimeout(type,40);
+  }
 }
+type();
+
+/* Celebration */
+function celebrate(){
+
+  document.body.style.background="linear-gradient(135deg,#ff758c,#ff7eb3,#fad0c4)";
+
+  // Fireworks
+  for(let i=0;i<250;i++){
+    let particle=document.createElement("div");
+    particle.className="particle";
+    particle.style.background="hsl("+Math.random()*360+",100%,50%)";
+    particle.style.left="50%";
+    particle.style.top="50%";
+    particle.style.setProperty('--x',(Math.random()*800-400)+"px");
+    particle.style.setProperty('--y',(Math.random()*600-300)+"px");
+    document.body.appendChild(particle);
+    setTimeout(()=>particle.remove(),1500);
+  }
+
+  // Heart rain
+  for(let i=0;i<100;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.top="-10vh";
+    heart.style.fontSize=(20+Math.random()*40)+"px";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),4000);
+  }
+
+  // Confetti
+  for(let i=0;i<80;i++){
+    let confetti=document.createElement("div");
+    confetti.className="confetti";
+    confetti.style.left=Math.random()*100+"vw";
+    confetti.style.background="hsl("+Math.random()*360+",100%,50%)";
+    document.body.appendChild(confetti);
+    setTimeout(()=>confetti.remove(),5000);
+  }
+
+  // Big Love Message
+  let msg=document.createElement("div");
+  msg.className="bigText";
+  msg.innerHTML="I LOVE YOU FOREVER 💖";
+  document.body.appendChild(msg);
+}
+
 </script>
 
 </body>
